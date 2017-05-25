@@ -1,0 +1,43 @@
+#include<stdlib.h>
+#include<stdio.h>
+#define ARRAY_SIZE 10
+void fill_random(int*a)
+{
+    for(int i=0;i<ARRAY_SIZE;i++)
+    {
+        a[i]=rand();
+    }
+}
+void Sort(int*a)
+{
+    int t, // временная переменная для хранения значения элемента сортируемого массива
+        p; // индекс предыдущего элемента
+    for (int c = 1; c < ARRAY_SIZE; c++)
+    {
+        t = a[c]; // инициализируем временную переменную текущим значением элемента массива
+        p = c-1; // запоминаем индекс предыдущего элемента массива
+        while(p >= 0 && a[p] > t) // пока индекс не равен 0 и предыдущий элемент массива больше текущего
+        {
+            a[p + 1] = a[p]; // перестановка элементов массива
+            a[p] = t;
+            p--;
+        }
+    }
+}
+void print_array(int*a)
+{
+    for(int p=0;p<ARRAY_SIZE;p++)
+    {
+        printf("%d \n",a[p]);
+    }
+}
+int main()
+{
+    int*array=(int*)malloc(ARRAY_SIZE*sizeof(int));
+    fill_random(array);
+    print_array(array);
+    Sort(array);
+    print_array(array);
+    system("pause");
+    return 0;
+}
