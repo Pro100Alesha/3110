@@ -39,5 +39,6 @@ int main()
     Sort(array);
     print_array(array);
     system("pause");
+    free(array);
     return 0;
 }
